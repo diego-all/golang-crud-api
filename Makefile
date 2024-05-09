@@ -1,4 +1,4 @@
-DSN="host=localhost port=54329 user=postgres password=password dbname=products sslmode=disable timezone=UTC connect_timeout=5"
+DSN="host=localhost port=54329 user=postgres password=password dbname=e_commerce sslmode=disable timezone=UTC connect_timeout=5"
 BINARY_NAME=golang-crud-api
 
 ## build: Build binary

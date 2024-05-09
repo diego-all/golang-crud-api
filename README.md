@@ -5,14 +5,39 @@ API written in Golang that stores information in a Postgres database. Implements
 
 ## Domain model metadata
 
-Domain: E-Commerce, Supermarket, (Shopping Cart)
+Domain: E-Commerce, Supermarket, (Shopping Cart).
 
     Product: (Id, Name, description, Price)
 
 Domain model using class diagram notation
 
+<img src="classDiagram.png" align="center"/>
+
 
 ## REST API
+
+### Start the project
+
+> Note: If you want to use a named volume (suggested) first you must create it with the next command.
+
+    docker volume create --name postgres_volume
+
+    docker-compose build --no-cache
+
+    docker-compose up -d
+
+    make start
+
+
+### Stop the project
+
+    make stop
+
+    docker-compose down -v  (Removes the volume)
+
+    docker-compose down -v --rmi all   (removes the volume and the image)
+
+    docker volume rm postgres_volume
 
 
 ## API Endpoints
@@ -277,13 +302,6 @@ curl --location --request DELETE 'http://localhost:9090/products/delete/69'
 </summary></details>
 
 -----------------------------------------------------------
-
-
-
-
-
-### API Endpoints
-
 
 
 
