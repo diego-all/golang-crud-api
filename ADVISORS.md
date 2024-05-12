@@ -27,7 +27,7 @@ Ese controlador, o método por lo general invoca internamente un modelo. Es dond
 
 Domain model using class diagram notation
 
-<img src="classDiagram.png" align="center"/>
+<img src="classDiagram2.png" align="center"/>
 
 
 2. Ver repositorio.
