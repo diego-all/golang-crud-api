@@ -13,8 +13,8 @@ services:
       mode: replicated
       replicas: 1
 
-    image: 'diegoall1990/golang-crud-api-db-ms:0.0.1'  # Assign or build the service image.
-    container_name: postgres_golang_crud_api-ms
+    image: 'diegoall1990/golang-crud-api-db:0.0.2'  # Assign or build the service image.
+    container_name: postgres_golang_crud_api
     ports:
       - "54329:5432"
     restart: always  # Ensures that the container is automatically restarted in case of failures

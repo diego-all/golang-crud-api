@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"Name\": \"uvas\",\n\"Description\": \"uvas chilenas\",\n\"Price\": 100\n}",
+							"raw": "{\n\"Name\": \"uvas verdes azules\",\n\"Description\": \"uvas chilenas verdes blancas\",\n\"Price\": 101\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -65,7 +65,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"Name\": \"uvas\",\n\"Description\": \"uvas chilenas rojas\",\n\"Price\": 105\n}",
+							"raw": "{\n\"Name\": \"uvas\",\n\"Description\": \"uvas chilenas rojas negras beige blanco gris\",\n\"Price\": 106\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -73,7 +73,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:9090/products/update/69",
+							"raw": "http://localhost:9090/products/update/10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -82,7 +82,7 @@
 							"path": [
 								"products",
 								"update",
-								"69"
+								"10"
 							]
 						}
 					},
@@ -103,7 +103,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:9090/products/update/57",
+							"raw": "http://localhost:9090/products/update/11",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -112,7 +112,7 @@
 							"path": [
 								"products",
 								"update",
-								"57"
+								"11"
 							]
 						}
 					},
@@ -154,6 +154,161 @@
 								"products",
 								"delete",
 								"69"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "[CREATE] /categories",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"Name\": \"Aseo\",\n\"Description\": \"Aseo para el hogar y cuidado personal\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[READ] /categories/get/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/categories/get/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"categories",
+								"get",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[UPDATE] /categories/update{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"Name\": \"Viveres\",\n\"Description\": \"Mercado, frutas y verduras.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/categories/update/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"categories",
+								"update",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[UPDATE] /products/update{id}",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"Name\": \"Viveres\",\n\"Description\": \"Mercado, frutas y verduras from PATCH.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/products/update/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"products",
+								"update",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[LIST] /categories/all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/categories/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"categories",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[DELETE] /products/delete/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/categories/delete/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"categories",
+								"delete",
+								"5"
 							]
 						}
 					},

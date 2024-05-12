@@ -11,7 +11,7 @@ Domain: E-Commerce, Supermarket, (Shopping Cart).
 
 Domain model using class diagram notation
 
-<img src="classDiagram.png" align="center"/>
+<img src="classDiagram2.png" align="center"/>
 
 
 ## REST API
@@ -35,7 +35,7 @@ Domain model using class diagram notation
 
     docker-compose down -v  (Removes the volume)
 
-    docker-compose down -v --rmi all   (removes the volume and the image)
+    docker-compose down -v --rmi all   (Removes the volume and the image)
 
     docker volume rm postgres_volume
 
