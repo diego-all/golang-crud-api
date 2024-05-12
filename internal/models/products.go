@@ -10,6 +10,7 @@ type Product struct {
 	Name        string    `json:"name,omitempty"`
 	Description string    `json:"description,omitempty"`
 	Price       float64   `json:"price"`
+	CategoryId  int       `json:"category_id"`
 	CreatedAt   time.Time `json:"created_at"`
 	UpdatedAt   time.Time `json:"updated_at"`
 }
@@ -22,13 +23,14 @@ func (p *Product) Insert(product Product) (int, error) {
 
 	var newID int
 
-	stmt := `insert into products (name, description, price, created_at, updated_at)
-	values ($1, $2, $3, $4, $5) returning id`
+	stmt := `insert into products (name, description, price, category_id, created_at, updated_at)
+	values ($1, $2, $3, $4, $5, $6) returning id`
 
 	err := db.QueryRowContext(ctx, stmt,
 		product.Name,
 		product.Description,
 		product.Price,
+		product.CategoryId,
 		time.Now(),
 		time.Now(),
 	).Scan(&newID)
@@ -38,14 +40,13 @@ func (p *Product) Insert(product Product) (int, error) {
 	}
 
 	return newID, nil
-
 }
 
 func (p *Product) GetOneById(id int) (*Product, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), dbTimeout)
 	defer cancel()
 
-	query := `select id, name, description, price, created_at, updated_at from products where id = $1`
+	query := `select id, name, description, price, category_id, created_at, updated_at from products where id = $1`
 
 	var product Product
 	row := db.QueryRowContext(ctx, query, id)
@@ -55,6 +56,7 @@ func (p *Product) GetOneById(id int) (*Product, error) {
 		&product.Name,
 		&product.Description,
 		&product.Price,
+		&product.CategoryId,
 		&product.CreatedAt,
 		&product.UpdatedAt,
 	)
@@ -64,7 +66,6 @@ func (p *Product) GetOneById(id int) (*Product, error) {
 	}
 
 	return &product, nil
-
 }
 
 func (p *Product) Update(product Product) (int, error) {
@@ -75,13 +76,15 @@ func (p *Product) Update(product Product) (int, error) {
 		name = $1,
 		description = $2,
 		price = $3,
-		updated_at = $4
-		where id = $5`
+		category_id = $4,
+		updated_at = $5
+		where id = $6`
 
 	_, err := db.ExecContext(ctx, stmt,
 		product.Name,
 		product.Description,
 		product.Price,
+		product.CategoryId,
 		time.Now(),
 		product.Id,
 	)
@@ -91,14 +94,13 @@ func (p *Product) Update(product Product) (int, error) {
 	}
 
 	return 0, nil
-
 }
 
 func (p *Product) GetAll() ([]*Product, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), dbTimeout)
 	defer cancel()
 
-	query := `select id, name, description, price, created_at, updated_at from products order by name`
+	query := `select id, name, description, price, category_id, created_at, updated_at from products order by name`
 
 	rows, err := db.QueryContext(ctx, query)
 	if err != nil {
@@ -115,6 +117,7 @@ func (p *Product) GetAll() ([]*Product, error) {
 			&product.Name,
 			&product.Description,
 			&product.Price,
+			&product.CategoryId,
 			&product.CreatedAt,
 			&product.UpdatedAt,
 		)

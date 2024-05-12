@@ -13,15 +13,15 @@ type productRequest struct {
 	Name        string  `json:"name"`
 	Description string  `json:"description"`
 	Price       float64 `json:"price"`
+	CategoryId  int     `json:"category_id"`
 }
 
 type productResponse struct {
 	Name        string  `json:"name"`
 	Description string  `json:"description"`
 	Price       float64 `json:"price"`
+	CategoryId  int     `json:"category_id"`
 }
-
-// "mini-golang-api-books/internal/models"
 
 func (app *application) CreateProduct(w http.ResponseWriter, r *http.Request) {
 
@@ -40,6 +40,7 @@ func (app *application) CreateProduct(w http.ResponseWriter, r *http.Request) {
 		Name:        productReq.Name,
 		Description: productReq.Description,
 		Price:       productReq.Price,
+		CategoryId:  productReq.CategoryId,
 	}
 
 	_, err = app.models.Product.Insert(product)
@@ -55,7 +56,6 @@ func (app *application) CreateProduct(w http.ResponseWriter, r *http.Request) {
 	}
 
 	_ = app.writeJSON(w, http.StatusAccepted, payload)
-
 }
 
 func (app *application) GetProduct(w http.ResponseWriter, r *http.Request) {
@@ -75,6 +75,7 @@ func (app *application) GetProduct(w http.ResponseWriter, r *http.Request) {
 		Name:        product.Name,
 		Description: product.Description,
 		Price:       product.Price,
+		CategoryId:  product.CategoryId,
 	}
 
 	payload := jsonResponse{
@@ -84,7 +85,6 @@ func (app *application) GetProduct(w http.ResponseWriter, r *http.Request) {
 	}
 
 	_ = app.writeJSON(w, http.StatusOK, payload)
-
 }
 
 func (app *application) UpdateProduct(w http.ResponseWriter, r *http.Request) {
@@ -116,6 +116,7 @@ func (app *application) UpdateProduct(w http.ResponseWriter, r *http.Request) {
 		Name:        productReq.Name,
 		Description: productReq.Description,
 		Price:       productReq.Price,
+		CategoryId:  productReq.CategoryId,
 		UpdatedAt:   time.Now(),
 		Id:          productID,
 	}
@@ -133,7 +134,6 @@ func (app *application) UpdateProduct(w http.ResponseWriter, r *http.Request) {
 	}
 
 	_ = app.writeJSON(w, http.StatusOK, payload)
-
 }
 
 func (app *application) AllProducts(w http.ResponseWriter, r *http.Request) {
@@ -172,5 +172,4 @@ func (app *application) DeleteProduct(w http.ResponseWriter, r *http.Request) {
 	}
 
 	_ = app.writeJSON(w, http.StatusOK, payload)
-
 }
