@@ -1,4 +1,4 @@
-# Domain model metadata (asesores)
+# Domain model metadata
 
 
 ## Actividad
@@ -71,3 +71,9 @@ Domain model using class diagram notation
 
 - Se crean las rutas y se invoca su handler correspondiente de acuerdo a la operación a realizar.  **routes.go**
 
+
+### Cambios puntuales en los archivos
+
+Se pueden visualizar con el siguiente comando:
+
+    git diff main feature/category-entity
